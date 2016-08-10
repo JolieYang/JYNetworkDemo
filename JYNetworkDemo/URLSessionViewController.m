@@ -8,10 +8,14 @@
 
 #import "URLSessionViewController.h"
 
-#define kURL @""
+#define kURL @"http://dl.download.csdn.net/down10/20140604/8e7db27fb09bf1dfc59cc7b2b0939e58.docx?response-content-disposition=attachment%3Bfilename%3D%22Apple%20Swift%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B.docx%22&OSSAccessKeyId=9q6nvzoJGowBj4q1&Expires=1470385444&Signature=kAM1C1UFk6yi25EzzIdpg6FG8UI%3D"
 
 @interface URLSessionViewController () {
     NSURLSessionDownloadTask *_downloadTask;
+    __weak IBOutlet UITextField *textField;
+    __weak IBOutlet UIProgressView *progressView;
+    __weak IBOutlet UILabel *label;
+    __weak IBOutlet UIButton *button;
 }
 
 @end
@@ -21,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,6 +34,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)downloadAction:(id)sender {
+    [self sendURLRequest];
+//    [self downloadFileByBackgroundSession];
+//    [self downloadFileBySession];
+//    [self downloadFileByBackgroundSession];
+}
+
+
+- (void)cancelDownload {
+    [_downloadTask cancel];
+}
+- (void)suspendDownload {
+    [_downloadTask suspend];
+}
+- (void)resumeDownload {
+    [_downloadTask resume];
+}
+
+// 通过代理检测下载进度
 #pragma mark P1:发送请求
 - (void)sendURLRequest {
     // 1. 创建url
@@ -39,7 +64,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     // 3. 创建会话
-    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
             [self loadData:data];
@@ -47,18 +72,17 @@
             NSLog(@"error :%@", error.localizedDescription);
         }
     }];
+    // 可实时监测请求进展
+//    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request];
     
     [dataTask resume];
 }
-#pragma mark NSURLSessionTaskDelegate
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
-didCompleteWithError:(nullable NSError *)error {
-    // 请求完成，成功或者失败的处理
-}
+
 #pragma mark NSURLSessionDataDelegate
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
 didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
     // 设置允许处理响应才会执行后面两个操作
+    NSLog(@"%s", __func__);
     completionHandler(NSURLSessionResponseAllow);
 }
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
@@ -108,9 +132,9 @@ didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSe
     [uploadTask resume];
 }
 
-#pragma mark P3:下载数据
+#pragma mark P3:下载数据 ok
 - (void)downloadFileBySession {
-    NSString *urlStr = @"";
+    NSString *urlStr = kURL;
     urlStr = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSURL *url = [NSURL URLWithString:urlStr];
     
@@ -124,6 +148,7 @@ didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSe
     
     // 3. 创建会话
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
+//    NSURLSession *session = [NSURLSession sharedSession]; // 使用系统共享实例，则没有进入代理
     _downloadTask = [session downloadTaskWithRequest:request];
     
     [_downloadTask resume];
@@ -131,9 +156,11 @@ didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSe
 #pragma mark NSURLSessionDownloadDelegate
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     // 更新进度条
+    NSLog(@"%s", __func__);
 }
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
 didFinishDownloadingToURL:(NSURL *)location {
+    NSLog(@"%s", __func__);
     NSError *error;
     NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
     NSString *savePath = [cachePath stringByAppendingPathComponent:@"a.text"];
@@ -143,28 +170,23 @@ didFinishDownloadingToURL:(NSURL *)location {
         NSLog(@"Error :%@", error.localizedDescription);
     }
 }
-//#pragma mark NSURLSessionTaskDelegate
-//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
-//didCompleteWithError:(nullable NSError *)error {
-//    if (error) {
-//        NSLog(@"Error:%@", error.localizedDescription);
-//    }
-//}
 
-- (void)cancelDownload {
-    [_downloadTask cancel];
+
+#pragma mark NSURLSessionTaskDelegate
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
+didCompleteWithError:(nullable NSError *)error {
+    NSLog(@"%s", __func__);
+    // 请求完成，成功或者失败的处理
+    if (error) {
+        NSLog(@"Error:%@", error.localizedDescription);
+    }
 }
-- (void)suspendDownload {
-    [_downloadTask suspend];
-}
-- (void)resumeDownload {
-    [_downloadTask resume];
-}
+
 
 
 #pragma mark P4:NSURLSession backgroundSessionConfiguration
 - (void)downloadFileByBackgroundSession {
-    NSString *urlStr = @"";
+    NSString *urlStr = kURL;
     urlStr = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSURL *url = [NSURL URLWithString:urlStr];
     
@@ -192,11 +214,11 @@ didFinishDownloadingToURL:(NSURL *)location {
 }
 #pragma mark NSURLSessionDelegate
 - (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session {
-    
+    NSLog(@"%s",__func__);
 }
 
 #pragma mark Util
 - (void)loadData:(NSData *)data {
-    
+    NSLog(@"%s", __func__);
 }
 @end
