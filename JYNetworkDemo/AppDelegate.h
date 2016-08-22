@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^backgroundSessionCompletionHandler)();
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (nonatomic, copy) backgroundSessionCompletionHandler backgroundCompletionHandler;
 
 @end
 

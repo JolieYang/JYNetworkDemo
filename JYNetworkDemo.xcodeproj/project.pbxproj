@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A04A84E81D5DBCC400550140 /* JYURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A04A84E71D5DBCC400550140 /* JYURLSessionManager.m */; };
 		A0C70AB91D5ACA54006F7753 /* JYRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A0C70AB81D5ACA54006F7753 /* JYRequest.m */; };
 		A0C70ABC1D5ACA62006F7753 /* JYResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A0C70ABB1D5ACA62006F7753 /* JYResponse.m */; };
+		A0C70AC31D5B2C9E006F7753 /* AFNetworkingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0C70AC21D5B2C9E006F7753 /* AFNetworkingViewController.m */; };
 		A0D95CB71D546FD200404FFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D95CB61D546FD200404FFD /* main.m */; };
 		A0D95CBA1D546FD200404FFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D95CB91D546FD200404FFD /* AppDelegate.m */; };
 		A0D95CBD1D546FD200404FFD /* URLConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D95CBC1D546FD200404FFD /* URLConnectionViewController.m */; };
@@ -26,11 +28,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A04A84E61D5DBCC400550140 /* JYURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JYURLSessionManager.h; path = Networking/JYURLSessionManager.h; sourceTree = "<group>"; };
+		A04A84E71D5DBCC400550140 /* JYURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JYURLSessionManager.m; path = Networking/JYURLSessionManager.m; sourceTree = "<group>"; };
 		A0C70AB71D5ACA54006F7753 /* JYRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JYRequest.h; path = Networking/JYRequest.h; sourceTree = "<group>"; };
 		A0C70AB81D5ACA54006F7753 /* JYRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JYRequest.m; path = Networking/JYRequest.m; sourceTree = "<group>"; };
 		A0C70ABA1D5ACA62006F7753 /* JYResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JYResponse.h; path = Networking/JYResponse.h; sourceTree = "<group>"; };
 		A0C70ABB1D5ACA62006F7753 /* JYResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JYResponse.m; path = Networking/JYResponse.m; sourceTree = "<group>"; };
 		A0C70ABF1D5ACC82006F7753 /* const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = const.h; sourceTree = "<group>"; };
+		A0C70AC11D5B2C9E006F7753 /* AFNetworkingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkingViewController.h; sourceTree = "<group>"; };
+		A0C70AC21D5B2C9E006F7753 /* AFNetworkingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkingViewController.m; sourceTree = "<group>"; };
 		A0D95CB21D546FD200404FFD /* JYNetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JYNetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D95CB61D546FD200404FFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A0D95CB81D546FD200404FFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -156,6 +162,8 @@
 				A0D95CBC1D546FD200404FFD /* URLConnectionViewController.m */,
 				A0D95CE71D5835E400404FFD /* URLSessionViewController.h */,
 				A0D95CE81D5835E400404FFD /* URLSessionViewController.m */,
+				A0C70AC11D5B2C9E006F7753 /* AFNetworkingViewController.h */,
+				A0C70AC21D5B2C9E006F7753 /* AFNetworkingViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -169,6 +177,8 @@
 				A0C70AB81D5ACA54006F7753 /* JYRequest.m */,
 				A0C70ABA1D5ACA62006F7753 /* JYResponse.h */,
 				A0C70ABB1D5ACA62006F7753 /* JYResponse.m */,
+				A04A84E61D5DBCC400550140 /* JYURLSessionManager.h */,
+				A04A84E71D5DBCC400550140 /* JYURLSessionManager.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -244,7 +254,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0D95CE31D58305500404FFD /* AFSecurityPolicy.m in Sources */,
+				A0C70AC31D5B2C9E006F7753 /* AFNetworkingViewController.m in Sources */,
 				A0D95CE91D5835E400404FFD /* URLSessionViewController.m in Sources */,
+				A04A84E81D5DBCC400550140 /* JYURLSessionManager.m in Sources */,
 				A0D95CE51D58305500404FFD /* AFURLResponseSerialization.m in Sources */,
 				A0D95CBD1D546FD200404FFD /* URLConnectionViewController.m in Sources */,
 				A0D95CBA1D546FD200404FFD /* AppDelegate.m in Sources */,
@@ -369,10 +381,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = JYNetworkDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.NL.JYNetworkDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
