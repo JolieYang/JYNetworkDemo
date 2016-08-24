@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Jolie_Yang. All rights reserved.
 //
 
-#ifndef const_h
+//#ifndef const_h
 #define const_h
 
 #if DEBUG
@@ -16,3 +16,9 @@
 
 
 #endif /* const_h */
+
+#ifndef __IPHONE_7_0
+
+#endif
+
+#define YLog(formatString, ...) NSLog((@"%s" formatString), __PRETTY_FUNCTION__, ##__VA_ARGS__);

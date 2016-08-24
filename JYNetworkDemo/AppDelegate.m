@@ -23,7 +23,8 @@
 }
 
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler {
-    self.backgroundCompletionHandler = completionHandler;
+    // 存储完成回调。完成回调会在URLSessionViewController中URLSessionDidFinishEventsForBackgroundURLSession实现
+    self.backgroundSessionCompletionHandler = completionHandler;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

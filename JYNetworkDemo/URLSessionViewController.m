@@ -14,6 +14,8 @@
 
 @interface URLSessionViewController () {
     NSURLSessionDownloadTask *_downloadTask;
+    NSURLSessionDataTask *_dataTask;
+    NSURLSessionUploadTask *_uploadTask;
     __weak IBOutlet UITextField *textField;
     __weak IBOutlet UIProgressView *progressView;
     __weak IBOutlet UILabel *label;
@@ -126,6 +128,7 @@ didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSe
     NSURLSessionUploadTask *uploadTask = [session uploadTaskWithRequest:request fromData:bodyData completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
             NSString *dataStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"rose show data:%@", dataStr);
         } else {
             NSLog(@"error:%@", error.localizedDescription);
         }
@@ -227,9 +230,9 @@ didCompleteWithError:(nullable NSError *)error {
     
     // Other operation...
     
-    if (pDelegate.backgroundCompletionHandler) {
-        void (^completionHandler)() = pDelegate.backgroundCompletionHandler;
-        pDelegate.backgroundCompletionHandler = nil;
+    if (pDelegate.backgroundSessionCompletionHandler) {
+        void (^completionHandler)() = pDelegate.backgroundSessionCompletionHandler;
+        pDelegate.backgroundSessionCompletionHandler = nil;
         completionHandler();
     }
     
@@ -239,6 +242,6 @@ didCompleteWithError:(nullable NSError *)error {
 #pragma mark Util
 - (void)loadData:(NSData *)data {
     NSString *dataStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"loadData: %@", dataStr);
+//    NSLog(@"loadData: %@", dataStr);
 }
 @end

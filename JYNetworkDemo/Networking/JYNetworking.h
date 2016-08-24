@@ -19,9 +19,9 @@
 
 typedef void (^HttpResponseBlock)(JYResponse *responseObject, NSError *error);
 #pragma mark 集约型
-+ (id)request:(JYRequest *)baseRequest callback:(HttpResponseBlock)block;
+//+ (id)request:(JYRequest *)baseRequest callback:(HttpResponseBlock)block;
 
 #pragma mark 离散型
-- (NSURLSessionTask *)getUserInfo:(NSString *)userId success:(void (^)(NSURLSessionDataTask *dataTask, id *responseObject))success failure:(void (^)(NSURLSessionDataTask *dataTask, NSError *error))failure;
-- (NSURLSessionTask *)getMsgList:(NSString *)userId success:(void (^)(NSURLSessionDataTask *dataTask, id *responseObject))success failure:(void (^)(NSURLSessionDataTask *dataTask, NSError *error))failure;
+//- (NSURLSessionTask *)getUserInfo:(NSString *)userId success:(void (^)(NSURLSessionDataTask *dataTask, id *responseObject))success failure:(void (^)(NSURLSessionDataTask *dataTask, NSError *error))failure;
+//- (NSURLSessionTask *)getMsgList:(NSString *)userId success:(void (^)(NSURLSessionDataTask *dataTask, id *responseObject))success failure:(void (^)(NSURLSessionDataTask *dataTask, NSError *error))failure;
 @end

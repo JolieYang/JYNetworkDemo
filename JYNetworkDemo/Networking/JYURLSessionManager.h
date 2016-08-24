@@ -13,8 +13,8 @@
 @end
 
 @interface JYHTTPResposneSerializer : NSObject
-- (instancetype)init;
-+ (instancetype)serializer;
+//- (instancetype)init;
+//+ (instancetype)serializer;
 
 @property (nonatomic, assign) NSStringEncoding stringEncoding;
 @property (nonatomic, copy) NSIndexSet *acceptableStatusCode;
