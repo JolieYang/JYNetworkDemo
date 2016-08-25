@@ -6,6 +6,10 @@
 //  Copyright © 2016年 Jolie_Yang. All rights reserved.
 //
 
+// Question List:
+// ?1.[solved] 显示" background URLSession with identifier com.jy.networking.session.background1 already exists!"  // 因为在session单例中我先执行了sessionWithConfiguration,sessionWithConfiguration:delegate。 所以才会不进入回调。问题反思： 昨天在这个问题上，有个细节我发现了，就是一直没有进入NSURLSessionDownloadDelegate相关的回调方法，但是没有思考这背后的原因，通过sessionWithConfiguration获取session时，再进行sessionWithconfiguration:delegate:delegateQueue时这一步是失败的。很奇怪编译器为什么没有在这里崩溃呢，而是报错信息。
+// ?2. button的更新
+
 #import "backgroundSessionViewController.h"
 #import "AppDelegate.h"
 #import "const.h"
@@ -31,7 +35,7 @@ static NSString * const backgroundSessionIdentifier = @"com.jy.networking.sessio
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     // 初始化
-//    self.backgroundSession= [self backgroundSession];
+    self.backgroundSession= [self backgroundSession];
 }
 
 - (NSURLSession *)backgroundSession {
@@ -40,7 +44,6 @@ static NSString * const backgroundSessionIdentifier = @"com.jy.networking.sessio
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier: backgroundSessionIdentifier];
-        session = [NSURLSession sessionWithConfiguration:configuration];
         session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];// NSURLSessionDelegate
     });
     return session;
@@ -115,7 +118,7 @@ didCompleteWithError:(nullable NSError *)error {
     NSURL *downloadURL = [NSURL URLWithString:download_book_url];
     NSURLRequest *request = [NSURLRequest requestWithURL: downloadURL];
     
-    // 显示" background URLSession with identifier com.jy.networking.session.background1 already exists!"  ？？？
+    // ?1. 显示" background URLSession with identifier com.jy.networking.session.background1 already exists!"
     self.downloadTask = [self.backgroundSession downloadTaskWithRequest: request];
     [self.downloadTask resume];
     

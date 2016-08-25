@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JYNetworkDemo/backgroundSessionViewController.m"
-            timestampString = "493717289.241613"
+            timestampString = "493806434.202736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "-URLSession:downloadTask:didFinishDownloadingToURL:"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JYNetworkDemo/backgroundSessionViewController.m"
-            timestampString = "493717300.654372"
+            timestampString = "493806434.202736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "-URLSession:downloadTask:didWriteData:totalBytesWritten:totalBytesExpectedToWrite:"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JYNetworkDemo/backgroundSessionViewController.m"
-            timestampString = "493717432.82464"
+            timestampString = "493806434.202736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "-URLSession:task:didCompleteWithError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,44 +202,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JYNetworkDemo/backgroundSessionViewController.m"
-            timestampString = "493717439.13705"
+            timestampString = "493806434.202736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "-startLoadPictureAction:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "JYNetworkDemo/backgroundSessionViewController.m"
-            timestampString = "493718137.378234"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "-backgroundSession"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "JYNetworkDemo/backgroundSessionViewController.m"
-            timestampString = "493719166.795459"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "-dealloc"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JYNetworkDemo/backgroundSessionViewController.m"
+            timestampString = "493806434.202736"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-URLSession:downloadTask:didFinishDownloadingToURL:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

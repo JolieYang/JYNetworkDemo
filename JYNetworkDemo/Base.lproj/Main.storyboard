@@ -13,7 +13,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BCc-52-77F">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.086274509799999996" green="0.64313725489999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Bhi-Pq-qxb"/>
@@ -23,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="-474" y="398"/>
         </scene>
-        <!--URL Session View Controller-->
+        <!--主页-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="URLSessionViewController" sceneMemberID="viewController">
@@ -54,6 +55,16 @@
                                     <action selector="downloadAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mr5-ie-JyU"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="乔布斯.pdf" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iuk-56-wJu">
+                                <rect key="frame" x="16" y="84" width="288" height="30"/>
+                                <color key="backgroundColor" red="0.29019607843137257" green="0.53333333333333333" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="d1o-4C-pBJ"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MWT-uf-llN">
                                 <rect key="frame" x="16" y="141" width="288" height="2"/>
                             </progressView>
@@ -73,16 +84,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="乔布斯.pdf" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iuk-56-wJu">
-                                <rect key="frame" x="16" y="84" width="288" height="30"/>
-                                <color key="backgroundColor" red="0.29019607843137257" green="0.53333333333333333" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="d1o-4C-pBJ"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -106,7 +107,7 @@
                             <constraint firstItem="MWT-uf-llN" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="wbM-w7-sMf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8G0-IE-fcY"/>
+                    <navigationItem key="navigationItem" title="主页" id="8G0-IE-fcY"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="button" destination="gAg-Qf-hnD" id="5Nf-2Y-6xj"/>
@@ -131,7 +132,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mqe-ge-i4I">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_image" translatesAutoresizingMaskIntoConstraints="NO" id="mqe-ge-i4I">
                                 <rect key="frame" x="45" y="84" width="230" height="230"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="QZG-jL-0Qq"/>
@@ -182,5 +183,32 @@
             </objects>
             <point key="canvasLocation" x="520" y="392"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="0Gg-ob-VvD">
+            <objects>
+                <viewController id="uPQ-Fn-IRY" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l3u-gJ-QPn">
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ul5-g3-TIy">
+                                <rect key="frame" x="229" y="141" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="500" height="600"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aay-Sb-t3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="336" y="1081"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="default_image" width="100" height="100"/>
+    </resources>
 </document>

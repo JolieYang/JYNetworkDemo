@@ -83,6 +83,8 @@
 		A067F0371D6D4396003140D6 /* URLSession */ = {
 			isa = PBXGroup;
 			children = (
+				A0D95CE71D5835E400404FFD /* URLSessionViewController.h */,
+				A0D95CE81D5835E400404FFD /* URLSessionViewController.m */,
 				A067F0381D6D44E5003140D6 /* backgroundSessionViewController.h */,
 				A067F0391D6D44E5003140D6 /* backgroundSessionViewController.m */,
 			);
@@ -173,8 +175,6 @@
 				A067F0371D6D4396003140D6 /* URLSession */,
 				A0D95CBB1D546FD200404FFD /* URLConnectionViewController.h */,
 				A0D95CBC1D546FD200404FFD /* URLConnectionViewController.m */,
-				A0D95CE71D5835E400404FFD /* URLSessionViewController.h */,
-				A0D95CE81D5835E400404FFD /* URLSessionViewController.m */,
 				A0C70AC11D5B2C9E006F7753 /* AFNetworkingViewController.h */,
 				A0C70AC21D5B2C9E006F7753 /* AFNetworkingViewController.m */,
 			);
