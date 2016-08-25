@@ -149,34 +149,30 @@
                                     <action selector="startLoadPictureAction:" destination="KQ3-GZ-8GJ" eventType="touchUpInside" id="37G-gS-ra0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LhD-0k-dQT">
-                                <rect key="frame" x="45" y="383" width="230" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLN-y1-irt">
+                                <rect key="frame" x="45" y="381" width="230" height="30"/>
                                 <color key="backgroundColor" red="0.2901960784" green="0.53333333329999999" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="加载图片">
+                                <state key="normal" title="加载本地图片">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="testAction:" destination="KQ3-GZ-8GJ" eventType="touchUpInside" id="QF1-HB-jSp"/>
+                                    <action selector="setLocalPictureAction:" destination="KQ3-GZ-8GJ" eventType="touchUpInside" id="Emf-OR-QXd"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LhD-0k-dQT" firstAttribute="trailing" secondItem="B8z-EM-M0p" secondAttribute="trailing" id="FQA-zp-qnv"/>
                             <constraint firstItem="B8z-EM-M0p" firstAttribute="trailing" secondItem="mqe-ge-i4I" secondAttribute="trailing" id="Lk7-rp-Ei1"/>
                             <constraint firstItem="B8z-EM-M0p" firstAttribute="leading" secondItem="mqe-ge-i4I" secondAttribute="leading" id="Ll6-YE-sKB"/>
                             <constraint firstItem="mqe-ge-i4I" firstAttribute="top" secondItem="yXd-vk-7pI" secondAttribute="bottom" constant="20" id="W7O-OV-R1N"/>
                             <constraint firstItem="mqe-ge-i4I" firstAttribute="centerX" secondItem="Maj-u5-Dh1" secondAttribute="centerX" id="YKQ-IJ-fcI"/>
-                            <constraint firstItem="LhD-0k-dQT" firstAttribute="top" secondItem="B8z-EM-M0p" secondAttribute="bottom" constant="20" id="Ybo-qe-ZcS"/>
                             <constraint firstItem="B8z-EM-M0p" firstAttribute="top" secondItem="mqe-ge-i4I" secondAttribute="bottom" constant="19" id="hl8-TU-aBv"/>
-                            <constraint firstItem="LhD-0k-dQT" firstAttribute="leading" secondItem="B8z-EM-M0p" secondAttribute="leading" id="lpV-En-QfU"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="imageView" destination="mqe-ge-i4I" id="vWU-54-rXQ"/>
                         <outlet property="loadBtn" destination="B8z-EM-M0p" id="N3V-no-UYI"/>
-                        <outlet property="testBtn" destination="LhD-0k-dQT" id="HZQ-Co-uan"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7G-Yo-q2k" userLabel="First Responder" sceneMemberID="firstResponder"/>
