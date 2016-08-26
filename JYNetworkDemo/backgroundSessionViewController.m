@@ -6,10 +6,12 @@
 //  Copyright © 2016年 Jolie_Yang. All rights reserved.
 //
 
+// Tips:
+// T1: 后台会话模式不可使用Block获取数据，需通过delegate回调。
 // Question List:
-// ?1.[solved] 显示" background URLSession with identifier com.jy.networking.session.background1 already exists!"  // 因为在session单例中我先执行了sessionWithConfiguration,sessionWithConfiguration:delegate。 所以才会不进入回调。问题反思： 昨天在这个问题上，有个细节我发现了，就是一直没有进入NSURLSessionDownloadDelegate相关的回调方法，但是没有思考这背后的原因，通过sessionWithConfiguration获取session时，再进行sessionWithconfiguration:delegate:delegateQueue时这一步是失败的。至少在发起回调的地方应该检查下很奇怪编译器为什么没有在这里崩溃呢，而是报错信息。
+// ?1.[solved] 显示" background URLSession with identifier com.jy.networking.session.background1 already exists!"  // 因为在session单例中我先执行了sessionWithConfiguration,sessionWithConfiguration:delegate。 所以才会不进入回调。问题反思： 昨天在这个问题上，有个细节我发现了，就是一直没有进入NSURLSessionDownloadDelegate相关的回调方法，但是没有思考这背后的原因，通过sessionWithConfiguration获取session时，再进行sessionWithconfiguration:delegate:delegateQueue时这一步是失败的。至少在发起回调的地方应该检查下很奇怪编译器为什么没有在这里崩溃呢，而是报错信息。25th,August,2016
 // ?2.[solved] button的更新 一开始button内容更新使用的是titleLabel.text修改文本， 现象是点击加载切换成加载中，但当加载完成后本应显示“加载成功”但是闪现“加载成功”后现实的是在Storyboard中设置的默认文本“加载图片”。 分析： 查看了下titleLabel，发现该属性是只读的，然后再查看了text属性strong，可读写。感觉编译器应该不允许这样的行为吧，既然titleLabel不可写，那么titleLabel里面的属性应该也不可写吧。正确的button文本更新方式 setTitle:forState
-// ?3. 返回上一级界面再进入该页面就无法更新imageView了，为什么啊
+// ?3.[needSolve] 返回上一级界面再进入该页面就无法更新imageView了，为什么啊
 
 #import "backgroundSessionViewController.h"
 #import "AppDelegate.h"
@@ -34,6 +36,7 @@ static NSString * const backgroundSessionIdentifier = @"com.jy.networking.sessio
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     // 初始化
+    self.imageView.hidden = NO;
     self.backgroundSession= [self backgroundSession];
 }
 
@@ -42,7 +45,8 @@ static NSString * const backgroundSessionIdentifier = @"com.jy.networking.sessio
     static NSURLSession *session;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier: backgroundSessionIdentifier];
+//        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier: backgroundSessionIdentifier];
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];// NSURLSessionDelegate
     });
     return session;
@@ -116,7 +120,6 @@ didFinishDownloadingToURL:(NSURL *)location {
         dispatch_async(dispatch_get_main_queue(), ^{
             // ?3. 返回上一级界面再进入该页面就无法更新imageView了，为什么啊
             UIImage *image = [UIImage imageWithContentsOfFile:[destinationURL path]];
-//            self.imageView.image = image;
             [self.imageView setImage:image];
             [self.loadBtn setTitle:@"加载成功" forState:UIControlStateNormal];
         });
