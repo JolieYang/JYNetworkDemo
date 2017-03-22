@@ -111,7 +111,6 @@ didFinishDownloadingToURL:(NSURL *)location {
     if (errorCopy) {
         YLog(@"Error during copy:%@", errorCopy.localizedDescription);
         dispatch_async(dispatch_get_main_queue(), ^{
-            // ?2. 加载图片失败应该是要显示加载失败，但是测试效果是有闪过显示该文本，但又回到默认文本“加载图片”了。
             self.imageView.image = [UIImage imageNamed:@"download_failed"];
             [self.loadBtn setTitle:@"加载失败" forState:UIControlStateNormal];
         });

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface URLSessionViewController : UIViewController<NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDownloadDelegate>
+@interface RequestViewController : UIViewController<NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDownloadDelegate>
 
 @end
 

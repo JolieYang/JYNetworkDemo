@@ -149,10 +149,7 @@
 
 #pragma mark P3:通过代理，发送请求，接收数据。实际开发中一般不使用该方法
 - (void)sendRequest {
-    // 18个 ios 项目源代码  http://dl.download.csdn.net/down10/20140227/3bedf165d27501e34e9df65382aa6a37.zip?response-content-disposition=attachment%3Bfilename%3D%22ios%E4%BB%A3%E7%A0%81.zip%22&OSSAccessKeyId=9q6nvzoJGowBj4q1&Expires=1470385535&Signature=phwSpbb4aCIb7zrOL1rWJOduoHE%3D
-    // http://dl.download.csdn.net/down10/20140604/8e7db27fb09bf1dfc59cc7b2b0939e58.docx?response-content-disposition=attachment%3Bfilename%3D%22Apple%20Swift%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B.docx%22&OSSAccessKeyId=9q6nvzoJGowBj4q1&Expires=1470385444&Signature=kAM1C1UFk6yi25EzzIdpg6FG8UI%3D
     NSString *urlStr = [NSString stringWithFormat:@"http://dl.download.csdn.net/down10/20140604/8e7db27fb09bf1dfc59cc7b2b0939e58.docx?response-content-disposition=attachment%3Bfilename%3D%22Apple%20Swift%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B.docx%22&OSSAccessKeyId=9q6nvzoJGowBj4q1&Expires=1470385444&Signature=kAM1C1UFk6yi25EzzIdpg6FG8UI%3D"];
-//    urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     urlStr = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSURL *url = [NSURL URLWithString:urlStr];
     

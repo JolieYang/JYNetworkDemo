@@ -7,7 +7,7 @@
 //
 
 #import "AFNetworkingViewController.h"
-#import "AFNetworking/AFNetworking.h"
+#import "AFNetworking.h"
 #define TEST_URL @"https://github.com"
 
 @interface AFNetworkingViewController () {

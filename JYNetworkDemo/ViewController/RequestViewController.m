@@ -6,13 +6,14 @@
 //  Copyright © 2016年 Jolie_Yang. All rights reserved.
 //
 
-#import "URLSessionViewController.h"
+#import "RequestViewController.h"
+#import "AFDownloadFileViewController.h"
 #import "AppDelegate.h"
 
 #define kURL @"http://dl.download.csdn.net/down10/20140604/8e7db27fb09bf1dfc59cc7b2b0939e58.docx?response-content-disposition=attachment%3Bfilename%3D%22Apple%20Swift%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B.docx%22&OSSAccessKeyId=9q6nvzoJGowBj4q1&Expires=1470385444&Signature=kAM1C1UFk6yi25EzzIdpg6FG8UI%3D"
 #define GITHUB_URL @"https://github.com"
 
-@interface URLSessionViewController () {
+@interface RequestViewController () {
     NSURLSessionDownloadTask *_downloadTask;
     NSURLSessionDataTask *_dataTask;
     NSURLSessionUploadTask *_uploadTask;
@@ -24,7 +25,7 @@
 
 @end
 
-@implementation URLSessionViewController
+@implementation RequestViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,6 +46,10 @@
 //    [self downloadFileByBackgroundSession];
 }
 
+- (IBAction)afDownloadAction:(id)sender {
+    AFDownloadFileViewController *vc = [AFDownloadFileViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)cancelDownload {
     [_downloadTask cancel];

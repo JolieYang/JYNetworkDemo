@@ -14,6 +14,7 @@
 #else
     #define SERVER_URL @""
 
+#define GRAY_GIRL = @"https://raw.githubusercontent.com/JolieYang/Picture/master/gray_girl.png";
 
 #endif /* const_h */
 
