@@ -56,4 +56,19 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
 }
 
+/**
+ * 通过Reqest判断是否存在对应request的缓存
+ */
+- (BOOL)isExistCacheWithRequest:(NSURLRequest *)requeest {
+    BOOL isExistCache = NO;
+    NSURLCache *cache = [NSURLCache sharedURLCache];
+    [cache setMemoryCapacity:10 * 1024 * 1024]; // 设置内存中缓存的大小
+    
+    NSCachedURLResponse *response = [cache cachedResponseForRequest:requeest];
+    if (response) {
+        isExistCache = YES;
+    }
+    return isExistCache;
+}
+
 @end

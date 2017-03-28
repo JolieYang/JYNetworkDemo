@@ -37,7 +37,6 @@ static NSString * const backgroundSessionIdentifier = @"com.jy.networking.sessio
     // Do any additional setup after loading the view.
     // 初始化
     self.imageView.hidden = NO;
-    self.backgroundSession= [self backgroundSession];
 }
 
 - (NSURLSession *)backgroundSession {
@@ -163,14 +162,5 @@ didCompleteWithError:(nullable NSError *)error {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
-//- (void)dealloc {
-//    [self.downloadTask cancel];
-////    [self.backgroundSession finishTasksAndInvalidate];
-//    [self.backgroundSession invalidateAndCancel];
-//}
-
 
 @end

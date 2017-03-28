@@ -20,11 +20,16 @@
 		A09C84AA1E7F70600063555E /* defaultSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A09C84A41E7F70600063555E /* defaultSessionViewController.m */; };
 		A09C84AF1E7F71690063555E /* AFDownloadFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A09C84AD1E7F71690063555E /* AFDownloadFileViewController.m */; };
 		A09C84B01E7F71690063555E /* AFDownloadFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A09C84AE1E7F71690063555E /* AFDownloadFileViewController.xib */; };
-		A09C84B81E7FB1600063555E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A09C84B21E7FB1600063555E /* .gitignore */; };
-		A09C84BA1E7FB1600063555E /* AFDownloadRequestOperation.podspec in Resources */ = {isa = PBXBuildFile; fileRef = A09C84B51E7FB1600063555E /* AFDownloadRequestOperation.podspec */; };
-		A09C84BB1E7FB1600063555E /* LICENCE in Resources */ = {isa = PBXBuildFile; fileRef = A09C84B61E7FB1600063555E /* LICENCE */; };
-		A09C84BC1E7FB1600063555E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A09C84B71E7FB1600063555E /* README.md */; };
 		A09C84BF1E7FCA430063555E /* RequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A09C84BE1E7FCA430063555E /* RequestViewController.m */; };
+		A09C84C21E825FF40063555E /* AFUploadFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A09C84C11E825FF40063555E /* AFUploadFileViewController.m */; };
+		A09C84C81E83BAF60063555E /* AFDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A09C84C71E83BAF60063555E /* AFDownloadManager.m */; };
+		A0B0CF091E88F247001F4A51 /* YYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B0CF021E88F247001F4A51 /* YYCache.m */; };
+		A0B0CF0A1E88F247001F4A51 /* YYDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B0CF041E88F247001F4A51 /* YYDiskCache.m */; };
+		A0B0CF0B1E88F247001F4A51 /* YYKVStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B0CF061E88F247001F4A51 /* YYKVStorage.m */; };
+		A0B0CF0C1E88F247001F4A51 /* YYMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B0CF081E88F247001F4A51 /* YYMemoryCache.m */; };
+		A0B0CF0E1E88FDF0001F4A51 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B0CF0D1E88FDF0001F4A51 /* libsqlite3.tbd */; };
+		A0B0CF101E8901D4001F4A51 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B0CF0F1E8901D4001F4A51 /* QuickLook.framework */; };
+		A0B0CF131E890279001F4A51 /* CustomPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B0CF121E890279001F4A51 /* CustomPreviewController.m */; };
 		A0C70AB91D5ACA54006F7753 /* JYRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A0C70AB81D5ACA54006F7753 /* JYRequest.m */; };
 		A0C70ABC1D5ACA62006F7753 /* JYResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A0C70ABB1D5ACA62006F7753 /* JYResponse.m */; };
 		A0D95CB71D546FD200404FFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D95CB61D546FD200404FFD /* main.m */; };
@@ -63,13 +68,24 @@
 		A09C84AC1E7F71690063555E /* AFDownloadFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadFileViewController.h; sourceTree = "<group>"; };
 		A09C84AD1E7F71690063555E /* AFDownloadFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadFileViewController.m; sourceTree = "<group>"; };
 		A09C84AE1E7F71690063555E /* AFDownloadFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AFDownloadFileViewController.xib; sourceTree = "<group>"; };
-		A09C84B21E7FB1600063555E /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		A09C84B31E7FB1600063555E /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadRequestOperation.h; sourceTree = "<group>"; };
-		A09C84B51E7FB1600063555E /* AFDownloadRequestOperation.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AFDownloadRequestOperation.podspec; sourceTree = "<group>"; };
-		A09C84B61E7FB1600063555E /* LICENCE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
-		A09C84B71E7FB1600063555E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A09C84BD1E7FCA430063555E /* RequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestViewController.h; sourceTree = "<group>"; };
 		A09C84BE1E7FCA430063555E /* RequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestViewController.m; sourceTree = "<group>"; };
+		A09C84C01E825FF40063555E /* AFUploadFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFUploadFileViewController.h; sourceTree = "<group>"; };
+		A09C84C11E825FF40063555E /* AFUploadFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFUploadFileViewController.m; sourceTree = "<group>"; };
+		A09C84C61E83BAF60063555E /* AFDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadManager.h; sourceTree = "<group>"; };
+		A09C84C71E83BAF60063555E /* AFDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadManager.m; sourceTree = "<group>"; };
+		A0B0CF011E88F247001F4A51 /* YYCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCache.h; sourceTree = "<group>"; };
+		A0B0CF021E88F247001F4A51 /* YYCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCache.m; sourceTree = "<group>"; };
+		A0B0CF031E88F247001F4A51 /* YYDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDiskCache.h; sourceTree = "<group>"; };
+		A0B0CF041E88F247001F4A51 /* YYDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDiskCache.m; sourceTree = "<group>"; };
+		A0B0CF051E88F247001F4A51 /* YYKVStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYKVStorage.h; sourceTree = "<group>"; };
+		A0B0CF061E88F247001F4A51 /* YYKVStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYKVStorage.m; sourceTree = "<group>"; };
+		A0B0CF071E88F247001F4A51 /* YYMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYMemoryCache.h; sourceTree = "<group>"; };
+		A0B0CF081E88F247001F4A51 /* YYMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYMemoryCache.m; sourceTree = "<group>"; };
+		A0B0CF0D1E88FDF0001F4A51 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		A0B0CF0F1E8901D4001F4A51 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		A0B0CF111E890279001F4A51 /* CustomPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPreviewController.h; sourceTree = "<group>"; };
+		A0B0CF121E890279001F4A51 /* CustomPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPreviewController.m; sourceTree = "<group>"; };
 		A0C70AB71D5ACA54006F7753 /* JYRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JYRequest.h; path = Networking/JYRequest.h; sourceTree = "<group>"; };
 		A0C70AB81D5ACA54006F7753 /* JYRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JYRequest.m; path = Networking/JYRequest.m; sourceTree = "<group>"; };
 		A0C70ABA1D5ACA62006F7753 /* JYResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JYResponse.h; path = Networking/JYResponse.h; sourceTree = "<group>"; };
@@ -91,6 +107,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B0CF101E8901D4001F4A51 /* QuickLook.framework in Frameworks */,
+				A0B0CF0E1E88FDF0001F4A51 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +118,7 @@
 		A09C84821E7F6FD50063555E /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				A09C84B11E7FB1600063555E /* AFDownloadRequestOperation-master */,
+				A0B0CF001E88F247001F4A51 /* YYCache */,
 				A09C84831E7F6FD50063555E /* AFNetworking */,
 			);
 			path = Library;
@@ -149,11 +167,17 @@
 		A09C849A1E7F70600063555E /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				A09C84C61E83BAF60063555E /* AFDownloadManager.h */,
+				A09C84C71E83BAF60063555E /* AFDownloadManager.m */,
 				A09C849B1E7F70600063555E /* AFNetworkingViewController.h */,
 				A09C849C1E7F70600063555E /* AFNetworkingViewController.m */,
 				A09C84AC1E7F71690063555E /* AFDownloadFileViewController.h */,
 				A09C84AD1E7F71690063555E /* AFDownloadFileViewController.m */,
 				A09C84AE1E7F71690063555E /* AFDownloadFileViewController.xib */,
+				A0B0CF111E890279001F4A51 /* CustomPreviewController.h */,
+				A0B0CF121E890279001F4A51 /* CustomPreviewController.m */,
+				A09C84C01E825FF40063555E /* AFUploadFileViewController.h */,
+				A09C84C11E825FF40063555E /* AFUploadFileViewController.m */,
 			);
 			path = AFNetworking;
 			sourceTree = "<group>";
@@ -178,21 +202,26 @@
 			path = URLSession;
 			sourceTree = "<group>";
 		};
-		A09C84B11E7FB1600063555E /* AFDownloadRequestOperation-master */ = {
+		A0B0CF001E88F247001F4A51 /* YYCache */ = {
 			isa = PBXGroup;
 			children = (
-				A09C84B21E7FB1600063555E /* .gitignore */,
-				A09C84B31E7FB1600063555E /* AFDownloadRequestOperation.h */,
-				A09C84B51E7FB1600063555E /* AFDownloadRequestOperation.podspec */,
-				A09C84B61E7FB1600063555E /* LICENCE */,
-				A09C84B71E7FB1600063555E /* README.md */,
+				A0B0CF011E88F247001F4A51 /* YYCache.h */,
+				A0B0CF021E88F247001F4A51 /* YYCache.m */,
+				A0B0CF031E88F247001F4A51 /* YYDiskCache.h */,
+				A0B0CF041E88F247001F4A51 /* YYDiskCache.m */,
+				A0B0CF051E88F247001F4A51 /* YYKVStorage.h */,
+				A0B0CF061E88F247001F4A51 /* YYKVStorage.m */,
+				A0B0CF071E88F247001F4A51 /* YYMemoryCache.h */,
+				A0B0CF081E88F247001F4A51 /* YYMemoryCache.m */,
 			);
-			path = "AFDownloadRequestOperation-master";
+			path = YYCache;
 			sourceTree = "<group>";
 		};
 		A0D95CA91D546FD200404FFD = {
 			isa = PBXGroup;
 			children = (
+				A0B0CF0F1E8901D4001F4A51 /* QuickLook.framework */,
+				A0B0CF0D1E88FDF0001F4A51 /* libsqlite3.tbd */,
 				A0D95CB41D546FD200404FFD /* JYNetworkDemo */,
 				A0D95CB31D546FD200404FFD /* Products */,
 			);
@@ -304,11 +333,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A09C84B81E7FB1600063555E /* .gitignore in Resources */,
-				A09C84BB1E7FB1600063555E /* LICENCE in Resources */,
 				A0D95CC51D546FD200404FFD /* LaunchScreen.storyboard in Resources */,
 				A0D95CC21D546FD200404FFD /* Assets.xcassets in Resources */,
-				A09C84BA1E7FB1600063555E /* AFDownloadRequestOperation.podspec in Resources */,
 				A09C84B01E7F71690063555E /* AFDownloadFileViewController.xib in Resources */,
 				A0D95CC01D546FD200404FFD /* Main.storyboard in Resources */,
 			);
@@ -322,24 +348,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				A09C84961E7F6FD50063555E /* AFURLSessionManager.m in Sources */,
+				A0B0CF0C1E88F247001F4A51 /* YYMemoryCache.m in Sources */,
+				A0B0CF0A1E88F247001F4A51 /* YYDiskCache.m in Sources */,
 				A09C84AA1E7F70600063555E /* defaultSessionViewController.m in Sources */,
-				A09C84BC1E7FB1600063555E /* README.md in Sources */,
 				A09C84931E7F6FD50063555E /* AFSecurityPolicy.m in Sources */,
 				A09C84A91E7F70600063555E /* backgroundSessionViewController.m in Sources */,
 				A09C84A71E7F70600063555E /* AFNetworkingViewController.m in Sources */,
 				A09C84921E7F6FD50063555E /* AFNetworkReachabilityManager.m in Sources */,
 				A04A84E81D5DBCC400550140 /* JYURLSessionManager.m in Sources */,
+				A0B0CF0B1E88F247001F4A51 /* YYKVStorage.m in Sources */,
 				A09C84911E7F6FD50063555E /* AFHTTPSessionManager.m in Sources */,
 				A0D95CBA1D546FD200404FFD /* AppDelegate.m in Sources */,
 				A0D95CEF1D5ABE7200404FFD /* JYNetworking.m in Sources */,
 				A0D95CB71D546FD200404FFD /* main.m in Sources */,
+				A09C84C81E83BAF60063555E /* AFDownloadManager.m in Sources */,
 				A0C70ABC1D5ACA62006F7753 /* JYResponse.m in Sources */,
+				A0B0CF131E890279001F4A51 /* CustomPreviewController.m in Sources */,
 				A09C84941E7F6FD50063555E /* AFURLRequestSerialization.m in Sources */,
+				A09C84C21E825FF40063555E /* AFUploadFileViewController.m in Sources */,
 				A09C84AF1E7F71690063555E /* AFDownloadFileViewController.m in Sources */,
 				A09C84951E7F6FD50063555E /* AFURLResponseSerialization.m in Sources */,
 				A09C84A81E7F70600063555E /* URLConnectionViewController.m in Sources */,
 				A0C70AB91D5ACA54006F7753 /* JYRequest.m in Sources */,
 				A09C84BF1E7FCA430063555E /* RequestViewController.m in Sources */,
+				A0B0CF091E88F247001F4A51 /* YYCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

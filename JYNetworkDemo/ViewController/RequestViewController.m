@@ -31,7 +31,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,7 +46,8 @@
 }
 
 - (IBAction)afDownloadAction:(id)sender {
-    AFDownloadFileViewController *vc = [AFDownloadFileViewController new];
+    AFDownloadFileViewController *vc = [[AFDownloadFileViewController alloc] initWithNibName:@"AFDownloadFileViewController" bundle:nil];
+//    AFDownloadFileViewController *vc = [[AFDownloadFileViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

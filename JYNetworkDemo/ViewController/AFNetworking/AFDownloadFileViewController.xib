@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AFDownloadFileViewController">
             <connections>
-                <outlet property="imageView" destination="bDG-lY-x0v" id="KoI-pZ-z5K"/>
                 <outlet property="progressLabel" destination="4aH-hB-T1X" id="qQi-AB-bp8"/>
                 <outlet property="progressView" destination="tKY-sy-qNy" id="aw1-bh-NZk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -33,16 +32,20 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4qY-OI-d02">
+                    <rect key="frame" x="204" y="178" width="75" height="30"/>
+                    <state key="normal" title="从本地加载"/>
+                    <connections>
+                        <action selector="quickLookLocalFileAction:" destination="-1" eventType="touchUpInside" id="fb9-1Z-lqM"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMv-KY-g2n">
-                    <rect key="frame" x="130" y="178" width="60" height="30"/>
+                    <rect key="frame" x="82" y="178" width="60" height="30"/>
                     <state key="normal" title="开始下载"/>
                     <connections>
                         <action selector="startDownload:" destination="-1" eventType="touchUpInside" id="bJ1-3D-ffg"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bDG-lY-x0v">
-                    <rect key="frame" x="8" y="241" width="304" height="270"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
