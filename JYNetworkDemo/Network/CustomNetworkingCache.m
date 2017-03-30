@@ -12,10 +12,13 @@
 @implementation CustomNetworkingCache {
 }
 static YYCache *_cache;
+static YYCache *_downloadCache;
 static NSString *const NetworkingCache = @"com.jy.networking.cache";
+static NSString *const NetworkingDownloadCache = @"com.jy.networking.download.cache";
 
 + (void)initialize {
     _cache = [YYCache cacheWithName:NetworkingCache];
+    _downloadCache = [YYCache cacheWithName:NetworkingDownloadCache];
 }
 
 #pragma mark -- GET/POST
@@ -55,20 +58,33 @@ static NSString *const NetworkingCache = @"com.jy.networking.cache";
 #pragma mark -- Download
 + (void)setDownloadCacheURL:(NSURL *)cacheUrl request:(NSString *)urlString parameters:(NSDictionary *)parameters {
     NSString *cacheKey = [self cacheKeyWithUrlString:urlString parameters:parameters];
-    [_cache setValue:cacheUrl forKey:cacheKey];
+    [_cache setObject:cacheUrl forKey:cacheKey];
 }
 
 + (void)setDownloadCacheURL:(NSURL *)cacheUrl reqeust:(NSString *)urlString {
-    [_cache setValue:cacheUrl forKey:urlString];
+    [_cache setObject:cacheUrl forKey:urlString];
 }
 
 + (NSURL *)dwonloadCacheURLForRequest:(NSString *)urlString {
-    return [_cache valueForKey:urlString];
+    return (NSURL *)[_cache objectForKey:urlString];
 }
 
 + (NSURL *)downloadCacheURLForRequest:(NSString *)urlString paramters:(NSDictionary *)parameters {
     NSString *cacheKey = [self cacheKeyWithUrlString:urlString parameters:parameters];
-    return [_cache valueForKey:cacheKey];
+    return (NSURL *)[_cache objectForKey:cacheKey];
+}
+
++ (void)removeDownloadCacheForURL:(NSString *)urlString {
+    [_cache.diskCache removeObjectForKey:urlString];
+}
+
++ (void)removeDownloadCacheForRequest:(NSString *)urlString parameters:(NSDictionary *)parameters {
+    NSString *cacheKey = [self cacheKeyWithUrlString:urlString parameters:parameters];
+    [_cache.diskCache removeObjectForKey:cacheKey];
+}
+
++ (void)removeAllDownloadCache {
+    [_cache.diskCache removeAllObjects];
 }
 
 #pragma mark Size

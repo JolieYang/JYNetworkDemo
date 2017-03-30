@@ -16,7 +16,11 @@
 + (id)httpCacheForUrlString:(NSString *)urlString parameters:(NSDictionary *)parameters;
 
 + (void)removeHttpCacheForUrlString:(NSString *)urlString;
-
++ (void)removeAllHttpCache;
 
 + (void)setDownloadCacheURL:(NSURL *)cacheUrl reqeust:(NSString *)urlString;
++ (NSURL *)dwonloadCacheURLForRequest:(NSString *)urlString;
++ (void)removeDownloadCacheForURL:(NSString *)urlString;
++ (void)removeDownloadCacheForRequest:(NSString *)urlString parameters:(NSDictionary *)parameters;
++ (void)removeAllDownloadCache;
 @end

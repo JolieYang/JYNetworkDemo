@@ -23,6 +23,16 @@
 
 @implementation CacheNetService
 
++ (instancetype)sharedService {
+    static CacheNetService *_sharedService = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedService = [[self alloc] init];
+    });
+   
+    return _sharedService;
+}
+
 - (NSURLSessionConfiguration *)configuration {
     if (!_configuration) {
         _configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -71,7 +81,15 @@
 
 - (void)downloadTaskWithString:(NSString *)urlString
                       progress:(void (^)(NSProgress *downloadProgress))downloadProgressBlock
-             completionHandler:(void (^)(NSURLResponse *response, NSURL *filePath, NSError *error))completionHandler{
+             completionHandler:(void (^)(NSURLResponse *response, NSURL *filePath, NSError *error))completionHandler {
+    NSURL *cacheUrl = [CustomNetworkingCache dwonloadCacheURLForRequest:urlString];
+    if (cacheUrl) {
+        if (completionHandler) {
+            completionHandler(nil, cacheUrl, nil);
+        }
+        return;
+    }
+    
     if (!_downloadTask) {
         NSURL *url = [NSURL URLWithString:urlString];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -81,7 +99,7 @@
             NSString *path = [cachesPath stringByAppendingPathComponent:response.suggestedFilename];
             NSURL *destinationUrl = [NSURL fileURLWithPath:path];
             
-            [CustomNetworkingCache setDownloadCacheURL: destinationUrl reqeust:urlString];
+            [CustomNetworkingCache setDownloadCacheURL:destinationUrl reqeust:urlString];
             return destinationUrl;
         } completionHandler: completionHandler];
     }
@@ -96,6 +114,15 @@
     }
 }
 
+- (void)removeCache {
+    [CustomNetworkingCache removeAllDownloadCache];
+}
+
+- (void)removeCacheForURL:(NSString *)urlString {
+    [CustomNetworkingCache removeDownloadCacheForURL:urlString];
+}
+
+#pragma mark Tool
 - (NSString *)cachesDirectoryWithFileDir:(NSString *)fileDictory {
     NSString *cachePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:fileDictory ? fileDictory : @"Download"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
