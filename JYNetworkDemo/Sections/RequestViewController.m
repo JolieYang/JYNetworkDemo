@@ -247,6 +247,6 @@ didCompleteWithError:(nullable NSError *)error {
 #pragma mark Util
 - (void)loadData:(NSData *)data {
     NSString *dataStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//    NSLog(@"loadData: %@", dataStr);
+    NSLog(@"loadData: %@", dataStr);
 }
 @end

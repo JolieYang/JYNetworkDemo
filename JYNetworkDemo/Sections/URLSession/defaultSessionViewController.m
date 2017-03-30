@@ -10,6 +10,7 @@
 
 static NSString *flower_url = @"http://img.blog.csdn.net/20160822174348226";
 
+
 @interface defaultSessionViewController ()<NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDownloadDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
@@ -23,6 +24,7 @@ static NSString *flower_url = @"http://img.blog.csdn.net/20160822174348226";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    flower_url = @"https://drscdn.500px.org/photo/156556773/q%3D80_m%3D1000/93815cf3d792ce50d26b00fe53018061";
 }
 // 加载
 - (IBAction)loadAction:(id)sender {
@@ -35,7 +37,7 @@ static NSString *flower_url = @"http://img.blog.csdn.net/20160822174348226";
     // 2. 创建会话
     // 2.1 配置会话
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-//    configuration.timeoutIntervalForRequest = 15.0f;
+    configuration.timeoutIntervalForRequest = 3.0f;
     configuration.allowsCellularAccess = true;
     // 2.2 创建
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
@@ -117,6 +119,7 @@ didFinishDownloadingToURL:(NSURL *)location {
       didWriteData:(int64_t)bytesWritten
  totalBytesWritten:(int64_t)totalBytesWritten
 totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
+    NSLog(@"receive dAta");
    dispatch_async(dispatch_get_main_queue(), ^{
        self.progressView.progress = (float)totalBytesWritten / (float)totalBytesExpectedToWrite;
        if (totalBytesWritten == totalBytesExpectedToWrite) {
@@ -129,4 +132,5 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
        }
    });
 }
+
 @end

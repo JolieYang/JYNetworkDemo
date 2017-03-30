@@ -12,6 +12,7 @@
 #import "AFDownloadFileViewController.h"
 #import "CustomPreviewController.h"
 #import "AFNetworking.h"
+#import "YYCache.h"
 
 @interface AFDownloadFileViewController ()
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
@@ -85,9 +86,11 @@ static NSString *LOCAL_FILE_PATH = @"LOCAL_FILE_PATH";
         _configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         
         _configuration.HTTPShouldSetCookies = YES;
-        _configuration.requestCachePolicy = NSURLRequestUseProtocolCachePolicy;
+//        _configuration.requestCachePolicy = NSURLRequestUseProtocolCachePolicy;
+        _configuration.requestCachePolicy = NSURLRequestReturnCacheDataElseLoad;
+        _configuration.URLCache = [NSURLCache sharedURLCache];
         _configuration.allowsCellularAccess = YES;
-        _configuration.timeoutIntervalForRequest = 60.0;
+        _configuration.timeoutIntervalForRequest = 1.0;
     }
     return _configuration;
 }
@@ -137,10 +140,11 @@ static NSString *LOCAL_FILE_PATH = @"LOCAL_FILE_PATH";
                 [weakSelf updateProgressUIWithProgress:progress];
             });
         } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-            NSString *cachesPath = [self cachesPath];
+            NSString *cachesPath = [self cachesPathWithFileDir:nil];
             NSString *path = [cachesPath stringByAppendingPathComponent:response.suggestedFilename];
             return [NSURL fileURLWithPath:path];
         } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
             [[NSUserDefaults standardUserDefaults] setURL:filePath forKey:LOCAL_FILE_PATH];
             [[NSUserDefaults standardUserDefaults] synchronize];
             if (!error) {
@@ -196,7 +200,7 @@ static NSString *LOCAL_FILE_PATH = @"LOCAL_FILE_PATH";
     return NO;
 }
 
-- (NSString *)cachesPath {
-    return [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+- (NSString *)cachesPathWithFileDir:(NSString *)fileDictory {
+    return [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:fileDictory ? fileDictory : @"Download"];
 }
 @end
