@@ -23,7 +23,6 @@
 static NSString *Download_URL = nil;
 static NSInteger Limit_Size = 0;// 单位为M
 static NSArray *Support_MIMEType = nil;
-static NSString *LOCAL_FILE_PATH = @"LOCAL_FILE_PATH";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,19 +59,13 @@ static NSString *LOCAL_FILE_PATH = @"LOCAL_FILE_PATH";
     } else {
         [selectedBtn setTitle:@"开始下载" forState:UIControlStateNormal];
 //        [self.downloadTask suspend];
+        [[CacheNetService sharedService] suspendDownloadTask];
     }
 }
 
 // 从本地加载
 - (IBAction)quickLookLocalFileAction:(UIButton *)sender {
-    if ([self existCache]) {
-        // 从本地获取
-        NSURL *filePath = [[NSUserDefaults standardUserDefaults] URLForKey:LOCAL_FILE_PATH];
-        [self jumpToPreviewControllerWithFilePath:filePath];
-        [sender setTitle:@"从本地加载" forState:UIControlStateNormal];
-    } else {
-        [sender setTitle:@"本地无数据" forState:UIControlStateNormal];
-    }
+    
 }
 - (IBAction)deleteCacheAction:(id)sender {
     [[CacheNetService sharedService] removeCacheForURL:Download_URL];
@@ -124,13 +117,6 @@ static NSString *LOCAL_FILE_PATH = @"LOCAL_FILE_PATH";
         }
     }
     return fileLength;
-}
-
-- (BOOL)existCache {
-    if ([[NSUserDefaults standardUserDefaults] URLForKey:LOCAL_FILE_PATH]) {
-        return YES;
-    }
-    return NO;
 }
 
 - (NSString *)cachesPathWithFileDir:(NSString *)fileDictory {

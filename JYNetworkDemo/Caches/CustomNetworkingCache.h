@@ -16,7 +16,6 @@
 + (void)removeDownloadCacheForURL:(NSString *)urlString;
 + (void)removeDownloadCacheForRequest:(NSString *)urlString parameters:(NSDictionary *)parameters;
 + (void)removeAllDownloadCache;
-
-// 缓存路径
 + (NSString *)attachmentCachesDirectory;
+
 @end

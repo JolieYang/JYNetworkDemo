@@ -132,20 +132,7 @@
 
 - (void)removeDownloadCacheForURL:(NSString *)urlString {
     // 删除URL所在目录的文件
+    [CustomNetworkingCache removeAllDownloadCache];
 }
 
-#pragma mark Tool
-- (NSString *)cachesDicrectoryForDownloadFile {
-    return [self cachesDirectoryWithFileDir:@"Download"];
-}
-
-- (NSString *)cachesDirectoryWithFileDir:(NSString *)fileDictory {
-    NSString *cachePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:fileDictory ? fileDictory : @"Default"];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    BOOL isDirectory = YES;
-    if (![fileManager fileExistsAtPath:cachePath isDirectory:&isDirectory]) {
-        [fileManager createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    return cachePath;
-}
 @end
