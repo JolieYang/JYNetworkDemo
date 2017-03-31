@@ -32,7 +32,6 @@
 }
 
 - (instancetype)initWithFilePath:(NSURL *)filePath {
-    NSLog(@"filePath:%@", filePath);
     return [self initWithFilePath:filePath title:[filePath lastPathComponent]];
 }
 - (instancetype)initWithFilePath:(NSURL *)filePath title:(NSString *)title {

@@ -18,7 +18,6 @@
 		A06424F71E8CE55B006323F5 /* URLConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A06424EA1E8CE55B006323F5 /* URLConnectionViewController.m */; };
 		A06424F81E8CE55B006323F5 /* backgroundSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A06424ED1E8CE55B006323F5 /* backgroundSessionViewController.m */; };
 		A06424F91E8CE55B006323F5 /* defaultSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A06424EF1E8CE55B006323F5 /* defaultSessionViewController.m */; };
-		A06424FE1E8CE6F4006323F5 /* CustomNetworkingCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A06424FD1E8CE6F4006323F5 /* CustomNetworkingCache.m */; };
 		A06425011E8CF3DA006323F5 /* CacheNetService.m in Sources */ = {isa = PBXBuildFile; fileRef = A06425001E8CF3DA006323F5 /* CacheNetService.m */; };
 		A09C84911E7F6FD50063555E /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A09C84851E7F6FD50063555E /* AFHTTPSessionManager.m */; };
 		A09C84921E7F6FD50063555E /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A09C84881E7F6FD50063555E /* AFNetworkReachabilityManager.m */; };
@@ -26,6 +25,8 @@
 		A09C84941E7F6FD50063555E /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A09C848C1E7F6FD50063555E /* AFURLRequestSerialization.m */; };
 		A09C84951E7F6FD50063555E /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A09C848E1E7F6FD50063555E /* AFURLResponseSerialization.m */; };
 		A09C84961E7F6FD50063555E /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A09C84901E7F6FD50063555E /* AFURLSessionManager.m */; };
+		A0A2B97E1E8E407D0088CE1F /* CustomCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A2B97B1E8E407D0088CE1F /* CustomCache.m */; };
+		A0A2B97F1E8E407D0088CE1F /* CustomNetworkingCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A2B97D1E8E407D0088CE1F /* CustomNetworkingCache.m */; };
 		A0B0CF091E88F247001F4A51 /* YYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B0CF021E88F247001F4A51 /* YYCache.m */; };
 		A0B0CF0A1E88F247001F4A51 /* YYDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B0CF041E88F247001F4A51 /* YYDiskCache.m */; };
 		A0B0CF0B1E88F247001F4A51 /* YYKVStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B0CF061E88F247001F4A51 /* YYKVStorage.m */; };
@@ -59,8 +60,6 @@
 		A06424ED1E8CE55B006323F5 /* backgroundSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = backgroundSessionViewController.m; sourceTree = "<group>"; };
 		A06424EE1E8CE55B006323F5 /* defaultSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defaultSessionViewController.h; sourceTree = "<group>"; };
 		A06424EF1E8CE55B006323F5 /* defaultSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = defaultSessionViewController.m; sourceTree = "<group>"; };
-		A06424FC1E8CE6F4006323F5 /* CustomNetworkingCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNetworkingCache.h; sourceTree = "<group>"; };
-		A06424FD1E8CE6F4006323F5 /* CustomNetworkingCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNetworkingCache.m; sourceTree = "<group>"; };
 		A06424FF1E8CF3DA006323F5 /* CacheNetService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheNetService.h; sourceTree = "<group>"; };
 		A06425001E8CF3DA006323F5 /* CacheNetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheNetService.m; sourceTree = "<group>"; };
 		A09C84841E7F6FD50063555E /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
@@ -77,6 +76,10 @@
 		A09C848F1E7F6FD50063555E /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		A09C84901E7F6FD50063555E /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		A09C84981E7F70600063555E /* const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = const.h; sourceTree = "<group>"; };
+		A0A2B97A1E8E407D0088CE1F /* CustomCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCache.h; sourceTree = "<group>"; };
+		A0A2B97B1E8E407D0088CE1F /* CustomCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCache.m; sourceTree = "<group>"; };
+		A0A2B97C1E8E407D0088CE1F /* CustomNetworkingCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNetworkingCache.h; sourceTree = "<group>"; };
+		A0A2B97D1E8E407D0088CE1F /* CustomNetworkingCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNetworkingCache.m; sourceTree = "<group>"; };
 		A0B0CF011E88F247001F4A51 /* YYCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCache.h; sourceTree = "<group>"; };
 		A0B0CF021E88F247001F4A51 /* YYCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCache.m; sourceTree = "<group>"; };
 		A0B0CF031E88F247001F4A51 /* YYDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDiskCache.h; sourceTree = "<group>"; };
@@ -162,8 +165,6 @@
 		A06424FB1E8CE5D8006323F5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				A06424FC1E8CE6F4006323F5 /* CustomNetworkingCache.h */,
-				A06424FD1E8CE6F4006323F5 /* CustomNetworkingCache.m */,
 				A06424FF1E8CF3DA006323F5 /* CacheNetService.h */,
 				A06425001E8CF3DA006323F5 /* CacheNetService.m */,
 			);
@@ -207,6 +208,17 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		A0A2B9791E8E407D0088CE1F /* Caches */ = {
+			isa = PBXGroup;
+			children = (
+				A0A2B97A1E8E407D0088CE1F /* CustomCache.h */,
+				A0A2B97B1E8E407D0088CE1F /* CustomCache.m */,
+				A0A2B97C1E8E407D0088CE1F /* CustomNetworkingCache.h */,
+				A0A2B97D1E8E407D0088CE1F /* CustomNetworkingCache.m */,
+			);
+			path = Caches;
+			sourceTree = "<group>";
+		};
 		A0B0CF001E88F247001F4A51 /* YYCache */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +255,7 @@
 		A0D95CB41D546FD200404FFD /* JYNetworkDemo */ = {
 			isa = PBXGroup;
 			children = (
+				A0A2B9791E8E407D0088CE1F /* Caches */,
 				A06424FB1E8CE5D8006323F5 /* Network */,
 				A09C84971E7F70600063555E /* Config */,
 				A06424D91E8CE55B006323F5 /* Sections */,
@@ -346,7 +359,7 @@
 				A06424F31E8CE55B006323F5 /* AFNetworkingViewController.m in Sources */,
 				A09C84921E7F6FD50063555E /* AFNetworkReachabilityManager.m in Sources */,
 				A0B0CF0B1E88F247001F4A51 /* YYKVStorage.m in Sources */,
-				A06424FE1E8CE6F4006323F5 /* CustomNetworkingCache.m in Sources */,
+				A0A2B97F1E8E407D0088CE1F /* CustomNetworkingCache.m in Sources */,
 				A06424F51E8CE55B006323F5 /* CustomPreviewController.m in Sources */,
 				A09C84911E7F6FD50063555E /* AFHTTPSessionManager.m in Sources */,
 				A06425011E8CF3DA006323F5 /* CacheNetService.m in Sources */,
@@ -356,6 +369,7 @@
 				A06424F91E8CE55B006323F5 /* defaultSessionViewController.m in Sources */,
 				A06424F71E8CE55B006323F5 /* URLConnectionViewController.m in Sources */,
 				A06424F61E8CE55B006323F5 /* RequestViewController.m in Sources */,
+				A0A2B97E1E8E407D0088CE1F /* CustomCache.m in Sources */,
 				A09C84941E7F6FD50063555E /* AFURLRequestSerialization.m in Sources */,
 				A06424F81E8CE55B006323F5 /* backgroundSessionViewController.m in Sources */,
 				A09C84951E7F6FD50063555E /* AFURLResponseSerialization.m in Sources */,

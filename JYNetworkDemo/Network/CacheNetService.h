@@ -14,6 +14,8 @@
 - (void)downloadTaskWithString:(NSString *)urlString
                       progress:(void (^)(NSProgress *downloadProgress))downloadProgressBlock
              completionHandler:(void (^)(NSURLResponse *response, NSURL *filePath, NSError *error))completionHandler;
+- (void)suspendDownloadTask;
+
 - (void)removeCacheForURL:(NSString *)urlString;
-- (void)removeCache;
+- (void)removeAllCache;
 @end

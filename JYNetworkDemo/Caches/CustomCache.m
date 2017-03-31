@@ -6,10 +6,10 @@
 //  Copyright © 2017年 Jolie_Yang. All rights reserved.
 //
 
-#import "CustomNetworkingCache.h"
+#import "CustomCache.h"
 #import "YYCache.h"
 
-@implementation CustomNetworkingCache {
+@implementation CustomCache {
 }
 static YYCache *_cache;
 static YYCache *_downloadCache;
@@ -22,14 +22,19 @@ static NSString *const NetworkingDownloadCache = @"com.jy.networking.download.ca
 }
 
 #pragma mark -- GET/POST
-+ (void)setHttpCache:(id)httpData urlString:(NSString *)urlString {
++ (void)setHttpCache:(id)httpData
+           urlString:(NSString *)urlString {
     [_cache setObject:httpData forKey:urlString];
 }
-+ (void)setHttpCache:(id)httpData urlString:(NSString *)urlString parameters:(NSDictionary *)parameters {
+
++ (void)setHttpCache:(id)httpData
+           urlString:(NSString *)urlString
+          parameters:(NSDictionary *)parameters {
     NSString *cacheKey = [self cacheKeyWithUrlString:urlString parameters:parameters];
     // 异步缓存
     [_cache setObject:httpData forKey:cacheKey];
 }
+
 + (id)httpCacheForUrlString:(NSString *)urlString {
     return [self httpCacheForCacheKey:urlString];
 }
@@ -55,41 +60,25 @@ static NSString *const NetworkingDownloadCache = @"com.jy.networking.download.ca
     [_cache removeAllObjects];
 }
 
-#pragma mark -- Download
-+ (void)setDownloadCacheURL:(NSURL *)cacheUrl request:(NSString *)urlString parameters:(NSDictionary *)parameters {
-    NSString *cacheKey = [self cacheKeyWithUrlString:urlString parameters:parameters];
-    [_cache setObject:cacheUrl forKey:cacheKey];
-}
-
-+ (void)setDownloadCacheURL:(NSURL *)cacheUrl reqeust:(NSString *)urlString {
-    [_cache setObject:cacheUrl forKey:urlString];
-}
-
-+ (NSURL *)dwonloadCacheURLForRequest:(NSString *)urlString {
-    return (NSURL *)[_cache objectForKey:urlString];
-}
-
-+ (NSURL *)downloadCacheURLForRequest:(NSString *)urlString paramters:(NSDictionary *)parameters {
-    NSString *cacheKey = [self cacheKeyWithUrlString:urlString parameters:parameters];
-    return (NSURL *)[_cache objectForKey:cacheKey];
-}
-
-+ (void)removeDownloadCacheForURL:(NSString *)urlString {
-    [_cache.diskCache removeObjectForKey:urlString];
-}
-
-+ (void)removeDownloadCacheForRequest:(NSString *)urlString parameters:(NSDictionary *)parameters {
-    NSString *cacheKey = [self cacheKeyWithUrlString:urlString parameters:parameters];
-    [_cache.diskCache removeObjectForKey:cacheKey];
-}
-
-+ (void)removeAllDownloadCache {
-    [_cache.diskCache removeAllObjects];
-}
-
 #pragma mark Size
 + (NSInteger)getHttpCacheSize {
     return [_cache.diskCache totalCost];
+}
+
+#pragma mark FileManager
++ (NSString *)cachesDirectoryWithFileDir:(NSString *)fileDictory {
+    NSString *cachePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:fileDictory ? fileDictory : @"Default"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDirectory = YES;
+    if (![fileManager fileExistsAtPath:cachePath isDirectory:&isDirectory]) {
+        [fileManager createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return cachePath;
+}
+
++ (BOOL)removeFileAtPath:(NSString *)fileDictory {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    return [fileManager removeItemAtPath:fileDictory error:nil];
 }
 
 #pragma mark Tool

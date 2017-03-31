@@ -82,7 +82,7 @@
 - (void)downloadTaskWithString:(NSString *)urlString
                       progress:(void (^)(NSProgress *downloadProgress))downloadProgressBlock
              completionHandler:(void (^)(NSURLResponse *response, NSURL *filePath, NSError *error))completionHandler {
-    NSURL *cacheUrl = [CustomNetworkingCache dwonloadCacheURLForRequest:urlString];
+    NSURL *cacheUrl = [CustomNetworkingCache downloadCacheURLForRequest:urlString];
     if (cacheUrl) {
         if (completionHandler) {
             completionHandler(nil, cacheUrl, nil);
@@ -95,13 +95,16 @@
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         
         _downloadTask = [self.manager downloadTaskWithRequest:request progress:downloadProgressBlock destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-            NSString *cachesPath = [self cachesDirectoryWithFileDir:nil];
+            NSString *cachesPath = [CustomNetworkingCache attachmentCachesDirectory];
             NSString *path = [cachesPath stringByAppendingPathComponent:response.suggestedFilename];
             NSURL *destinationUrl = [NSURL fileURLWithPath:path];
             
             [CustomNetworkingCache setDownloadCacheURL:destinationUrl reqeust:urlString];
             return destinationUrl;
-        } completionHandler: completionHandler];
+        } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+            
+            completionHandler(response, filePath, error);
+        }];
     }
     if (_downloadTask.state == NSURLSessionTaskStateSuspended) {
         [_downloadTask resume];
@@ -111,10 +114,15 @@
         NSLog(@"正在下载中...");
     } else if (_downloadTask.state == NSURLSessionTaskStateCompleted) {
         NSLog(@"已下载完毕，请从本地获取");
+        _downloadTask = nil;
     }
 }
 
-- (void)removeCache {
+- (void)suspendDownloadTask {
+    [self.downloadTask suspend];
+}
+
+- (void)removeAllCache {
     [CustomNetworkingCache removeAllDownloadCache];
 }
 
@@ -122,9 +130,17 @@
     [CustomNetworkingCache removeDownloadCacheForURL:urlString];
 }
 
+- (void)removeDownloadCacheForURL:(NSString *)urlString {
+    // 删除URL所在目录的文件
+}
+
 #pragma mark Tool
+- (NSString *)cachesDicrectoryForDownloadFile {
+    return [self cachesDirectoryWithFileDir:@"Download"];
+}
+
 - (NSString *)cachesDirectoryWithFileDir:(NSString *)fileDictory {
-    NSString *cachePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:fileDictory ? fileDictory : @"Download"];
+    NSString *cachePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:fileDictory ? fileDictory : @"Default"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL isDirectory = YES;
     if (![fileManager fileExistsAtPath:cachePath isDirectory:&isDirectory]) {

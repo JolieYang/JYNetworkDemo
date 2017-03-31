@@ -12,6 +12,7 @@
 #import "AFDownloadFileViewController.h"
 #import "CustomPreviewController.h"
 #import "CacheNetService.h"
+#import "CustomNetworkingCache.h"
 
 @interface AFDownloadFileViewController ()
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
@@ -76,6 +77,10 @@ static NSString *LOCAL_FILE_PATH = @"LOCAL_FILE_PATH";
 - (IBAction)deleteCacheAction:(id)sender {
     [[CacheNetService sharedService] removeCacheForURL:Download_URL];
 }
+- (IBAction)userDefaultCacheAction:(id)sender {
+    NSURL *cacheUrl = [CustomNetworkingCache downloadCacheURLForRequest:Download_URL];
+    [self jumpToPreviewControllerWithFilePath:cacheUrl];
+}
 
 - (void)downloadTaskWithString:(NSString *)urlString {
     __weak typeof(self) weakSelf = self;
@@ -85,10 +90,8 @@ static NSString *LOCAL_FILE_PATH = @"LOCAL_FILE_PATH";
             [weakSelf updateProgressUIWithProgress:progress];
         });
     } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        NSLog(@"show httpResponse:%@", httpResponse);
+//        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         if (!error) {
-            NSLog(@"success download");
             // 进入显示页面
             [self jumpToPreviewControllerWithFilePath:filePath];
         }

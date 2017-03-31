@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CustomNetworkingCache : NSObject
+@interface CustomCache : NSObject
 + (void)setHttpCache:(id)httpData urlString:(NSString *)urlString;
 + (void)setHttpCache:(id)httpData urlString:(NSString *)urlString parameters:(NSDictionary *)parameters;
 
@@ -18,9 +18,9 @@
 + (void)removeHttpCacheForUrlString:(NSString *)urlString;
 + (void)removeAllHttpCache;
 
-+ (void)setDownloadCacheURL:(NSURL *)cacheUrl reqeust:(NSString *)urlString;
-+ (NSURL *)dwonloadCacheURLForRequest:(NSString *)urlString;
-+ (void)removeDownloadCacheForURL:(NSString *)urlString;
-+ (void)removeDownloadCacheForRequest:(NSString *)urlString parameters:(NSDictionary *)parameters;
-+ (void)removeAllDownloadCache;
++ (NSString *)cachesDirectoryWithFileDir:(NSString *)fileDictory;
++ (BOOL)removeFileAtPath:(NSString *)fileDictory;
+
+#pragma mark -- Tool
++ (NSString *)cacheKeyWithUrlString:(NSString *)urlString parameters:(NSDictionary *)parameters;
 @end
