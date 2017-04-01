@@ -345,13 +345,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "JYNetworkDemo/Library/AFNetworking/AFURLSessionManager.m"
-            timestampString = "512579487.954224"
+            filePath = "JYNetworkDemo/Sections/AFNetworking/AFDownloadFileViewController.m"
+            timestampString = "512722979.435122"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "-URLSession:task:didCompleteWithError:"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

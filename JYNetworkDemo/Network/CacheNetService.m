@@ -12,7 +12,6 @@
 
 @interface CacheNetService()
 @property (nonatomic, strong) NSURLSessionConfiguration *configuration;
-@property (nonatomic, strong) NSURLSessionDownloadTask *downloadTask;
 @property (nonatomic, strong) NSURLSessionDataTask *dataTask;
 @property (nonatomic, strong) AFHTTPSessionManager *manager;
 
@@ -102,7 +101,6 @@
             [CustomNetworkingCache setDownloadCacheURL:destinationUrl reqeust:urlString];
             return destinationUrl;
         } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-            
             completionHandler(response, filePath, error);
         }];
     }
@@ -114,12 +112,15 @@
         NSLog(@"正在下载中...");
     } else if (_downloadTask.state == NSURLSessionTaskStateCompleted) {
         NSLog(@"已下载完毕，请从本地获取");
-        _downloadTask = nil;
     }
 }
 
 - (void)suspendDownloadTask {
     [self.downloadTask suspend];
+}
+
+- (void)resumeDownloadTask {
+    [self.downloadTask resume];
 }
 
 - (void)removeAllCache {

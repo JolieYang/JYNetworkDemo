@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface CacheNetService : NSObject
-+ (instancetype)sharedService;
+@property (nonatomic, strong) NSURLSessionDownloadTask *downloadTask;
 
++ (instancetype)sharedService;
 - (void)downloadTaskWithString:(NSString *)urlString
                       progress:(void (^)(NSProgress *downloadProgress))downloadProgressBlock
              completionHandler:(void (^)(NSURLResponse *response, NSURL *filePath, NSError *error))completionHandler;
 - (void)suspendDownloadTask;
+- (void)resumeDownloadTask;
 
 - (void)removeCacheForURL:(NSString *)urlString;
 - (void)removeAllCache;
