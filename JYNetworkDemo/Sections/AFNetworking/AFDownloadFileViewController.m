@@ -22,6 +22,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *previewView;
 @property (weak, nonatomic) IBOutlet UILabel *attachmentFileSizeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *onlinePreviewButton;
+@property (weak, nonatomic) IBOutlet UILabel *attachmentDownloadFileSizeLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *downloadView;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
@@ -30,6 +32,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *openButton;
 @property (nonatomic, strong) CacheNetService *service;
+
+@property (nonatomic, strong) NSLock *lock;
 @end
 
 @implementation AFDownloadFileViewController
@@ -41,12 +45,19 @@ static NSArray *Support_MIMEType = nil;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setupData];
+    
     [self downloadTaskWithString:Download_URL];
     [self.service.downloadTask addObserver:self
-                   forKeyPath:NSStringFromSelector(@selector(state))
-                      options:NSKeyValueObservingOptionNew
-                      context:NULL];
+                                forKeyPath:NSStringFromSelector(@selector(state))
+                                   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial
+                                   context:NULL];
 }
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    self.service.downloadTask = nil;
+}
+
 
 - (void)setupData {
     self.service = [CacheNetService sharedService];
@@ -68,9 +79,15 @@ static NSArray *Support_MIMEType = nil;
     // Dispose of any resources that can be recreated.
 }
 
+
+// 接收不到观察通知
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([object isEqual:self.service.downloadTask]) {
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(state))]) {
+            NSURLSessionTaskState state = [change[NSKeyValueChangeNewKey] longLongValue];
+            if (state == NSURLSessionTaskStateCompleted) {
+                [self.service.downloadTask removeObserver:self forKeyPath:NSStringFromSelector(@selector(state))];
+            }
             [self updateDownloadViews];
         }
     }
@@ -91,11 +108,13 @@ static NSArray *Support_MIMEType = nil;
     } else if(self.service.downloadTask.state == NSURLSessionTaskStateRunning) {
         [self.service suspendDownloadTask];
     }
+    NSLog(@"change state:%lu", self.service.downloadTask.state);
 }
 
 #pragma mark -- UI
 - (void)downloadTaskWithString:(NSString *)urlString {
     __weak typeof(self) weakSelf = self;
+    
     [self.service downloadTaskWithString:urlString progress:^(NSProgress *downloadProgress) {
         dispatch_async(dispatch_get_main_queue(), ^{
             float progress = downloadProgress.completedUnitCount / (float)downloadProgress.totalUnitCount;
@@ -103,7 +122,6 @@ static NSArray *Support_MIMEType = nil;
         });
     } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
         //        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        [weakSelf.service.downloadTask removeObserver:self forKeyPath:NSStringFromSelector(@selector(state))];
         if (!error) {
             // 进入显示页面
             [self jumpToPreviewControllerWithFilePath:filePath];
@@ -112,28 +130,43 @@ static NSArray *Support_MIMEType = nil;
 }
 
 - (void)updateDownloadViews {
-    [self updateViewsWithDownloadStatus:self.service.downloadTask.state];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateViewsWithDownloadStatus:self.service.downloadTask.state];
+    });
 }
 
 - (void)updateViewsWithDownloadStatus:(NSURLSessionTaskState)state {
-    NSLog(@"state:%lu", state);
     switch (state) {
-        case NSURLSessionTaskStateCanceling:
-            // 取消之后会进入Completed状态，所以需要特殊处理
         case NSURLSessionTaskStateRunning:
+            self.attachmentDownloadFileSizeLabel.hidden = YES;
             self.openButton.hidden = YES;
-            [self.previewView setHidden:YES];
+            self.previewView.hidden = YES;
+            self.attachmentFileSizeLabel.hidden = YES;
+            self.onlinePreviewButton.hidden = YES;
             [self.downloadSwitchButton setImage:[UIImage imageNamed:@"suspend.png"] forState:UIControlStateNormal];
             break;
+            
         case NSURLSessionTaskStateSuspended:
             self.openButton.hidden = YES;
             self.previewView.hidden = YES;
+            self.attachmentFileSizeLabel.hidden = YES;
+            self.onlinePreviewButton.hidden = YES;
             [self.downloadSwitchButton setImage:[UIImage imageNamed:@"download.png"] forState:UIControlStateNormal];
+            break;
+            
+        case NSURLSessionTaskStateCanceling:
+            // 取消之后会进入Completed状态，所以需要特殊处理
+            // 目前不会提供取消操作
+            break;
+            
         case NSURLSessionTaskStateCompleted:
             [self.openButton setTitle:@"打开" forState:UIControlStateNormal];
             self.openButton.hidden = NO;
+            self.attachmentDownloadFileSizeLabel.hidden = NO;
             self.downloadView.hidden = YES;
             self.previewView.hidden = YES;
+            break;
+            
         default:
             break;
     }
@@ -164,20 +197,10 @@ static NSArray *Support_MIMEType = nil;
     }
 }
 
-// 从本地加载
-- (IBAction)quickLookLocalFileAction:(UIButton *)sender {
-    
-    
-}
+
 - (IBAction)deleteCacheAction:(id)sender {
     [[CacheNetService sharedService] removeCacheForURL:Download_URL];
 }
-- (IBAction)userDefaultCacheAction:(id)sender {
-    NSURL *cacheUrl = [CustomNetworkingCache downloadCacheURLForRequest:Download_URL];
-    [self jumpToPreviewControllerWithFilePath:cacheUrl];
-}
-
-
 
 
 #pragma mark -- Tool

@@ -7,11 +7,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AFDownloadFileViewController">
             <connections>
+                <outlet property="attachmentDownloadFileSizeLabel" destination="oZm-wT-cLv" id="SRW-eh-jhs"/>
                 <outlet property="attachmentFileSizeLabel" destination="7U8-Pn-x0Y" id="vru-Hv-Pru"/>
                 <outlet property="attachmentNameLabel" destination="Amq-2N-v1F" id="m8f-ms-5aw"/>
                 <outlet property="attachmentTypeIcon" destination="9Yu-c4-6zr" id="1ej-mq-8Le"/>
                 <outlet property="downloadSwitchButton" destination="f86-lJ-rU8" id="1L8-Cl-H7q"/>
                 <outlet property="downloadView" destination="0FV-AA-JeF" id="Qad-Lg-9oD"/>
+                <outlet property="onlinePreviewButton" destination="sWb-AV-tn1" id="WJq-Sb-Gn6"/>
                 <outlet property="openButton" destination="yKy-ti-sKm" id="L21-ji-07z"/>
                 <outlet property="previewView" destination="Qtg-5a-W67" id="YBI-Au-seW"/>
                 <outlet property="progressLabel" destination="4aH-hB-T1X" id="qQi-AB-bp8"/>
@@ -46,32 +48,11 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4qY-OI-d02">
-                    <rect key="frame" x="184" y="447" width="75" height="30"/>
-                    <state key="normal" title="从本地加载"/>
-                    <connections>
-                        <action selector="quickLookLocalFileAction:" destination="-1" eventType="touchUpInside" id="fb9-1Z-lqM"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMv-KY-g2n">
-                    <rect key="frame" x="62" y="447" width="60" height="30"/>
-                    <state key="normal" title="开始下载"/>
-                    <connections>
-                        <action selector="startDownload:" destination="-1" eventType="touchUpInside" id="bJ1-3D-ffg"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbj-GM-qnT">
-                    <rect key="frame" x="62" y="485" width="60" height="30"/>
+                    <rect key="frame" x="176" y="521" width="60" height="30"/>
                     <state key="normal" title="删除缓存"/>
                     <connections>
                         <action selector="deleteCacheAction:" destination="-1" eventType="touchUpInside" id="zgA-sc-qdW"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KwS-iE-o2j">
-                    <rect key="frame" x="184" y="485" width="75" height="30"/>
-                    <state key="normal" title="从缓存加载"/>
-                    <connections>
-                        <action selector="userDefaultCacheAction:" destination="-1" eventType="touchUpInside" id="pQJ-vJ-ByB"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Word.png" translatesAutoresizingMaskIntoConstraints="NO" id="9Yu-c4-6zr">
@@ -92,16 +73,16 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qtg-5a-W67">
-                    <rect key="frame" x="8" y="291" width="304" height="21"/>
+                    <rect key="frame" x="8" y="291" width="304" height="28"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="13k" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7U8-Pn-x0Y">
-                            <rect key="frame" x="98" y="0.0" width="27" height="21"/>
+                            <rect key="frame" x="97" y="0.0" width="27" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWb-AV-tn1">
-                            <rect key="frame" x="151" y="-4" width="60" height="30"/>
+                            <rect key="frame" x="162" y="1" width="60" height="19"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="在线预览"/>
                             <connections>
@@ -111,6 +92,19 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="13k" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZm-wT-cLv">
+                    <rect key="frame" x="147" y="292" width="27" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMv-KY-g2n">
+                    <rect key="frame" x="86" y="521" width="60" height="30"/>
+                    <state key="normal" title="开始下载"/>
+                    <connections>
+                        <action selector="startDownload:" destination="-1" eventType="touchUpInside" id="bJ1-3D-ffg"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
