@@ -40,9 +40,12 @@
 		A0D95CC01D546FD200404FFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D95CBE1D546FD200404FFD /* Main.storyboard */; };
 		A0D95CC21D546FD200404FFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D95CC11D546FD200404FFD /* Assets.xcassets */; };
 		A0D95CC51D546FD200404FFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D95CC31D546FD200404FFD /* LaunchScreen.storyboard */; };
+		D2DCFDE547142310F01FD5E2 /* libPods-JYNetworkDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F91D351FD4EA00DF0280F31 /* libPods-JYNetworkDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F91D351FD4EA00DF0280F31 /* libPods-JYNetworkDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JYNetworkDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		822ECEF9F795966B25305FF1 /* Pods-JYNetworkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JYNetworkDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JYNetworkDemo/Pods-JYNetworkDemo.release.xcconfig"; sourceTree = "<group>"; };
 		A06424B61E8CB2A8006323F5 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		A06424DB1E8CE55B006323F5 /* AFDownloadFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadFileViewController.h; sourceTree = "<group>"; };
 		A06424DC1E8CE55B006323F5 /* AFDownloadFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadFileViewController.m; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 		A0D95CC11D546FD200404FFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0D95CC41D546FD200404FFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0D95CC61D546FD200404FFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEDD9A5D3650C393734B6C74 /* Pods-JYNetworkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JYNetworkDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JYNetworkDemo/Pods-JYNetworkDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,12 +116,30 @@
 			files = (
 				A06424B71E8CB2A8006323F5 /* libsqlite3.tbd in Frameworks */,
 				A0B0CF101E8901D4001F4A51 /* QuickLook.framework in Frameworks */,
+				D2DCFDE547142310F01FD5E2 /* libPods-JYNetworkDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		020A00B58559FDF6D01437C9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F91D351FD4EA00DF0280F31 /* libPods-JYNetworkDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		644F1AD6BF81483A07F94DE3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CEDD9A5D3650C393734B6C74 /* Pods-JYNetworkDemo.debug.xcconfig */,
+				822ECEF9F795966B25305FF1 /* Pods-JYNetworkDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A06424D91E8CE55B006323F5 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +296,8 @@
 				A0B0CF0F1E8901D4001F4A51 /* QuickLook.framework */,
 				A0D95CB41D546FD200404FFD /* JYNetworkDemo */,
 				A0D95CB31D546FD200404FFD /* Products */,
+				644F1AD6BF81483A07F94DE3 /* Pods */,
+				020A00B58559FDF6D01437C9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -319,9 +343,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0D95CC91D546FD200404FFD /* Build configuration list for PBXNativeTarget "JYNetworkDemo" */;
 			buildPhases = (
+				AA3D9EAFBC669E6D1D69DA72 /* [CP] Check Pods Manifest.lock */,
 				A0D95CAE1D546FD200404FFD /* Sources */,
 				A0D95CAF1D546FD200404FFD /* Frameworks */,
 				A0D95CB01D546FD200404FFD /* Resources */,
+				E80883FF45C9513E52476A4B /* [CP] Embed Pods Frameworks */,
+				5A0E85FBA1D61F851C166C6E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -380,6 +407,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5A0E85FBA1D61F851C166C6E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JYNetworkDemo/Pods-JYNetworkDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA3D9EAFBC669E6D1D69DA72 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E80883FF45C9513E52476A4B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JYNetworkDemo/Pods-JYNetworkDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A0D95CAE1D546FD200404FFD /* Sources */ = {
@@ -521,6 +596,7 @@
 		};
 		A0D95CCA1D546FD200404FFD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CEDD9A5D3650C393734B6C74 /* Pods-JYNetworkDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -534,6 +610,7 @@
 		};
 		A0D95CCB1D546FD200404FFD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 822ECEF9F795966B25305FF1 /* Pods-JYNetworkDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JYNetworkDemo/Info.plist;
