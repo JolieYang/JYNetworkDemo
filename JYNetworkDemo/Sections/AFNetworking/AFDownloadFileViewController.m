@@ -61,7 +61,6 @@ static NSArray *Support_MIMEType = nil;
 
 - (void)setupData {
     self.service = [CacheNetService sharedService];
-    // test data
     Download_URL = @"https://github.com/JolieYang/Picture/raw/master/Mail/%E6%9E%81%E7%AE%80%E5%94%AF%E7%BE%8E.pptx";// application/octet-stream 2048835 极简唯美.pptx
 //    Download_URL = @"https://github.com/JolieYang/Picture/raw/master/Mail/%E7%94%B5%E8%AF%9D%E6%8C%87%E5%8D%972017%E5%B9%B42%E6%9C%88%E4%BB%BD%E6%9B%B4%E6%96%B0%E9%9B%86%E5%9B%A2.xls";// application/octet-stream 1805824 电话指南2017年2月份更新集团.xls
 //    Download_URL = @"https://github.com/JolieYang/Picture/raw/master/Mail/zip%E5%BD%92%E6%A1%A3.zip";// application/zip 1688858 zip归档.zip
@@ -80,6 +79,8 @@ static NSArray *Support_MIMEType = nil;
     // Dispose of any resources that can be recreated.
 }
 
+
+// 接收不到观察通知
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([object isEqual:self.service.downloadTask]) {
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(state))]) {
